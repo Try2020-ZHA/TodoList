@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 class TodoListInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text:"", size: 0  };
+        this.state = { text:"", size: 0 ,done:false };
     }
 
     handleAdd = () => {
@@ -11,7 +11,7 @@ class TodoListInput extends React.Component {
             alert("input again")
             return;
         }
-        this.props.addList(this.state.text)
+        this.props.addList({"text":this.state.text,"done":false})
         this.setState({text: ""})
     }
 
@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 };
   
   const mapDispatchToProps = dispatch=> ({
-    addList: (text) => dispatch({type: 'ADD_LIST_ITEM', text: text})
+    addList: (obj) => dispatch({type: 'ADD_LIST_ITEM', obj: obj})
   })
   
   export default connect(

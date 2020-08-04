@@ -14,12 +14,16 @@ class TodoList extends React.Component {
         return (
             <div>
                 {
-                    this.props.items.map((item, index) => (<TodoListItems item={item} key={index} />))
+                    this.props.items.map((item, index) => (<TodoListItems 
+                        item={item}
+                        key={index} 
+                        index={index}/>))
                 }
             </div>
         );
     }
 }
+
 
 const mapStateToProps = state => {
     return {
@@ -27,7 +31,11 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(TodoList);
+  
+//   export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(TodoListItems);
+
+// export default TodoList;
+export default connect(mapStateToProps)(TodoList);
