@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 class TodoListItems extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     handleMark = () => {
         this.props.markListItem(this.props.index);
@@ -28,14 +28,6 @@ TodoListItems.propTypes = {
     markListItem: PropTypes.func.isRequired,
     deleteItem: PropTypes.func.isRequired
   }
-
-//   const mapStateToProps = state => {
-//     return {text: state.text,
-//             size: state.size
-//     }
-// };
-
-
 
 const mapDispatchToProps = dispatch => ({
     markListItem: (index) => dispatch({ type: 'MARK_LIST_ITEM', index: index }),

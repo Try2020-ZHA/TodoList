@@ -16,6 +16,10 @@ export default (state = initState, action) => {
         console.log(state.items[action.index].done)
         state.items[action.index].done = !state.items[action.index].done;
         return {items:[...state.items],size: state.size + 1}
+      case 'FINISH_SELECT_ITEM':
+        return {
+          items: state.items.filter(i=> i.done== true)
+        }
       default:
         return state
     }
