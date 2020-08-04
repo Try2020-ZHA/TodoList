@@ -1,6 +1,5 @@
 import React from 'react';
 import TodoListItems from '../TodoListItems';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 class TodoList extends React.Component {
     constructor(props) {
@@ -20,10 +19,6 @@ class TodoList extends React.Component {
             </div>
         );
     }
-}
-
-TodoList.propTypes = {
-    addList: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {

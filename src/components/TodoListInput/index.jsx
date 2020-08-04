@@ -3,13 +3,23 @@ import {connect} from 'react-redux';
 class TodoListInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text:[], size: 0  };
+        this.state = { text:"", size: 0  };
     }
+
+    handleAdd = () => {
+        if(this.state.text===""){
+            alert("input again")
+            return;
+        }
+        this.props.addList(this.state.text)
+        this.setState({text: ""})
+    }
+
     render() {
         return (
             <div>
                 <input type="text" value={this.state.text} onChange={(e) => this.setState({text: e.target.value})}/>
-                <button onClick={() => this.props.addList(this.state.text)}>click</button>
+                <button onClick={this.handleAdd}>click</button>
             </div>
         );
     }

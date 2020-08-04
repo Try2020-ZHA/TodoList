@@ -7,6 +7,11 @@ export default (state = initState, action) => {
           items: [...state.items, action.text],
           size: state.size + 1
         }
+      case 'DELETE_LIST_ITEM':
+        return {
+          items: state.items.filter(i=> i !== action.item),
+          size: state.size-1
+        }
       default:
         return state
     }

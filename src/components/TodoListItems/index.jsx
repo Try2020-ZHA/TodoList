@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import {connect} from 'react-redux';
 class TodoListItems extends React.Component {
     constructor(props) {
         super(props);
@@ -8,15 +10,28 @@ class TodoListItems extends React.Component {
     render() {
         return (
             <div>
-                todoListItems: {this.props.item}
-                <button>X</button>
+                {this.props.item}
+                <button onClick={() => this.props.deleteItem(this.props.item)}>X</button>
             </div>
         );
     }
 }
 
-TodoListItems.propTypes = {
-    addList: PropTypes.func.isRequired
-  }
+// TodoListItems.propTypes = {
+//     deleteItem: PropTypes.func.isRequired
+//   }
 
-export default TodoListItems;
+  const mapStateToProps = state => {
+    return {text: state.text,
+            size: state.size
+    }
+};
+  
+  const mapDispatchToProps = dispatch=> ({
+    deleteItem: (item) => dispatch({type: 'DELETE_LIST_ITEM', item: item})
+  })
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(TodoListItems);
